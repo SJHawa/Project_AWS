@@ -99,9 +99,10 @@ GitHub Actions에서 AWS에 안전하게 접근하기 위해 아래 값을 Repos
 
 - AWS S3 배포 URL: `http://bucket-20263573.s3-website-us-east-1.amazonaws.com`
 
-## 8. GitHub Actions 활용 CI/CD 시연 영상
+## 8. GitHub Actions 활용 CI/CD, AWS Amplify 서비스 활용 시연 영상
 
 아래 항목은 업로드한 영상 링크로 교체해 주세요.
+- GitHub Actions 활용 CI/CD 시연 영상: `https://youtu.be/6cKF02TivbU`
 
-- YouTube 시연 영상 링크: `여기에 YouTube 링크 입력`
+- AWS Amplify 서비스 활용 시연 영상: `https://youtu.be/XPyj3cJvx9o`
 
