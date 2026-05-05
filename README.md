@@ -92,23 +92,12 @@ GitHub Actions에서 AWS에 안전하게 접근하기 위해 아래 값을 Repos
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN`
-- `AWS_REGION`
-- `AWS_S3_BUCKET`
 
-### AWS Academy 환경 참고
-
-AWS Academy에서 발급받은 자격 증명은 세션 기반으로 동작하므로 일정 시간이 지나면 만료될 수 있습니다.  
-과제 안내 기준으로 AWS URL은 세션 4시간 동안만 유효할 수 있으므로, 시연 직전에 다시 확인하는 것이 좋습니다.
 
 ## 7. AWS 배포 URL
 
-아래 항목은 실제 배포 후 최종 URL로 교체해 주세요.
 
-- AWS S3 배포 URL: `여기에 AWS 배포 URL 입력`
-
-참고:
-현재 워크플로는 S3 버킷으로 정적 파일을 업로드하도록 구성되어 있습니다.  
-정적 웹사이트 호스팅이 활성화되어 있다면 해당 S3 웹사이트 엔드포인트 주소를 사용하면 됩니다.
+- AWS S3 배포 URL: `http://bucket-20263573.s3-website-us-east-1.amazonaws.com`
 
 ## 8. GitHub Actions 활용 CI/CD 시연 영상
 
@@ -116,8 +105,3 @@ AWS Academy에서 발급받은 자격 증명은 세션 기반으로 동작하므
 
 - YouTube 시연 영상 링크: `여기에 YouTube 링크 입력`
 
-## 9. 기대 효과
-
-이 프로젝트를 통해 React 기반 프론트엔드 구현, GitHub 저장소 관리, GitHub Actions를 활용한 자동 배포, AWS S3를 이용한 정적 웹 호스팅 과정을 한 번에 실습할 수 있었습니다.
-
-특히 생성형 AI를 활용해 코드 작성과 배포 설정을 보조받음으로써, 개발 생산성을 높이고 CI/CD의 전체 흐름을 빠르게 이해할 수 있었습니다.
