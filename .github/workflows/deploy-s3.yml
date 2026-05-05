@@ -25,10 +25,12 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Sync files to S3
-        run: |
-          aws s3 sync . "s3://bucket-20263573" \
-            --delete \
-            --exclude ".git/*" \
-            --exclude ".github/*"
+      - name: Install dependencies
+        run: npm install
 
+      - name: Build React app
+        run: npm run build
+
+      - name: Sync build files to S3
+        run: |
+          aws s3 sync build "s3://bucket-20263573" --delete

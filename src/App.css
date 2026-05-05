@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
 :root {
-  --bg: linear-gradient(135deg, #f5efe4 0%, #e8f0ff 45%, #d7ece2 100%);
-  --panel: rgba(255, 255, 255, 0.8);
+  --bg: linear-gradient(135deg, #f7efe1 0%, #e7f0ff 48%, #dcefe3 100%);
+  --panel: rgba(255, 255, 255, 0.82);
   --panel-strong: rgba(255, 255, 255, 0.94);
   --text: #18212f;
   --muted: #5f6b7a;
-  --todo: #ff8f5a;
+  --todo: #f58b54;
   --progress: #4d8df7;
   --done: #2d9d78;
   --border: rgba(24, 33, 47, 0.12);
@@ -37,7 +39,7 @@ body::before {
   height: 18rem;
   top: 4rem;
   left: -4rem;
-  background: rgba(255, 143, 90, 0.22);
+  background: rgba(245, 139, 84, 0.22);
 }
 
 body::after {

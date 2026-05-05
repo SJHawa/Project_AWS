@@ -1,9 +1,10 @@
-const { useMemo, useState } = React;
+import React, { useMemo, useState } from "react";
+import "./App.css";
 
 const STATUS = {
-  todo: "Todo",
-  progress: "In Progress",
-  done: "Done",
+  todo: "계획",
+  progress: "진행 중",
+  done: "완료",
 };
 
 const STATUS_ORDER = ["todo", "progress", "done"];
@@ -11,20 +12,20 @@ const STATUS_ORDER = ["todo", "progress", "done"];
 const INITIAL_TASKS = [
   {
     id: 1,
-    title: "와이어프레임 정리",
-    description: "칸반 보드 화면 구성과 필요한 상태를 먼저 정리합니다.",
+    title: "주간 목표 정리",
+    description: "이번 주 핵심 업무와 개인 일정을 우선순위별로 정리합니다.",
     status: "todo",
   },
   {
     id: 2,
-    title: "리액트 상태 연결",
-    description: "배열 데이터를 기반으로 카드 렌더링과 이동 로직을 구성합니다.",
+    title: "프로젝트 발표 자료 보완",
+    description: "핵심 메시지와 화면 흐름을 다듬고 마지막 예시를 추가합니다.",
     status: "progress",
   },
   {
     id: 3,
-    title: "README 초안 작성",
-    description: "프로젝트 개요와 핵심 기능 설명 문구를 정리합니다.",
+    title: "운동 루틴 등록",
+    description: "월수금 저녁 운동 계획을 캘린더와 체크리스트에 반영했습니다.",
     status: "done",
   },
 ];
@@ -72,7 +73,7 @@ function App() {
     const newTask = {
       id: Date.now(),
       title: title.trim(),
-      description: description.trim() || "설명이 아직 없습니다.",
+      description: description.trim() || "세부 계획 메모가 아직 없습니다.",
       status: "todo",
     };
 
@@ -115,40 +116,40 @@ function App() {
   return (
     <main className="app">
       <section className="hero">
-        <span className="eyebrow">React Single Page Project</span>
-        <h1>Flow Board</h1>
+        <span className="eyebrow">React Plan System</span>
+        <h1>Plan Flow Board</h1>
         <p>
-          배열 형태의 데이터를 상태로 관리하고, 필터링과 단계 이동 로직을
-          활용해 `Todo / In Progress / Done` 구조의 칸반 보드를 구현한 React
-          실습 프로젝트입니다.
+          해야 할 일과 개인 계획을 단계별로 관리하는 React 보드입니다. 새 계획을
+          등록하고, 검색과 상태 필터를 활용해 진행 흐름을 한눈에 확인할 수
+          있습니다.
         </p>
       </section>
 
       <section className="dashboard">
         <div className="panel composer">
-          <h2>새 작업 추가</h2>
+          <h2>새 플랜 추가</h2>
           <p className="panel-note">
-            새 카드는 기본적으로 `Todo`에 생성됩니다. 제목과 설명을 입력한 뒤
-            단계별로 이동시켜 보세요.
+            새 플랜은 기본적으로 `계획` 상태로 생성됩니다. 제목과 메모를 입력한
+            뒤 단계별로 이동해 보세요.
           </p>
           <form onSubmit={addTask}>
             <div className="input-row">
               <input
                 type="text"
-                placeholder="예: API 연결 마무리"
+                placeholder="예: 포트폴리오 수정"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
-                aria-label="작업 제목"
+                aria-label="플랜 제목"
               />
               <input
                 type="text"
-                placeholder="간단한 설명"
+                placeholder="세부 메모"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
-                aria-label="작업 설명"
+                aria-label="플랜 메모"
               />
               <button type="submit" className="primary-button">
-                작업 추가
+                플랜 추가
               </button>
             </div>
           </form>
@@ -156,10 +157,9 @@ function App() {
 
         <aside className="panel search-panel">
           <div>
-            <h2>필터</h2>
+            <h2>플랜 필터</h2>
             <p className="panel-note">
-              제목 또는 설명으로 검색하고, 원하는 상태만 따로 확인할 수
-              있습니다.
+              제목 또는 메모로 검색하고, 필요한 단계만 따로 확인할 수 있습니다.
             </p>
           </div>
           <input
@@ -175,9 +175,9 @@ function App() {
             aria-label="상태 필터"
           >
             <option value="all">전체 상태</option>
-            <option value="todo">Todo</option>
-            <option value="progress">In Progress</option>
-            <option value="done">Done</option>
+            <option value="todo">계획</option>
+            <option value="progress">진행 중</option>
+            <option value="done">완료</option>
           </select>
           <button type="button" className="ghost-button" onClick={resetFilters}>
             필터 초기화
@@ -193,7 +193,7 @@ function App() {
         </aside>
       </section>
 
-      <section className="board" aria-label="칸반 보드">
+      <section className="board" aria-label="플랜 보드">
         {STATUS_ORDER.map((statusKey) => (
           <BoardColumn
             key={statusKey}
@@ -223,7 +223,7 @@ function BoardColumn({ statusKey, tasks, onMove, onRemove }) {
             className="dot"
             style={{ backgroundColor: colorMap[statusKey] }}
             aria-hidden="true"
-          ></span>
+          />
           <span>{STATUS[statusKey]}</span>
         </div>
         <span className="task-count">{tasks.length}</span>
@@ -232,9 +232,9 @@ function BoardColumn({ statusKey, tasks, onMove, onRemove }) {
       <div className="task-list">
         {tasks.length === 0 ? (
           <div className="empty-state">
-            현재 표시할 작업이 없습니다.
+            현재 표시할 플랜이 없습니다.
             <br />
-            필터를 조정하거나 새 작업을 추가해 보세요.
+            필터를 조정하거나 새 플랜을 추가해 보세요.
           </div>
         ) : (
           tasks.map((task) => (
@@ -267,5 +267,4 @@ function BoardColumn({ statusKey, tasks, onMove, onRemove }) {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+export default App;
